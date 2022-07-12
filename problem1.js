@@ -1,9 +1,9 @@
+// Function to sum any number of arguments
 function sum(...args) {
-  let sum = args.reduce((total, num) => total + num, 0);
-
-  return sum;
+  return args.reduce((total, num) => total + num, 0);
 }
 
+// Testing
 console.log(sum(8)); // 8
 console.log(sum(3, 65)); // 68
 console.log(sum(4, 9, 3)); // 16

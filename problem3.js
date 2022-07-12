@@ -1,3 +1,4 @@
+// Function to sum all the called arguments
 let sum = (num) => {
   let total = num;
 
@@ -13,6 +14,7 @@ let sum = (num) => {
   return addNum;
 };
 
+// Testing
 console.dir(sum(1)());
 console.dir(sum(1)(2)());
 console.dir(sum(1)(2)(3)());
