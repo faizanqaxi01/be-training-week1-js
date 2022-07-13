@@ -12,11 +12,7 @@ Array.prototype.populate = async function () {
   for (let i = 0; i < this.length; i++) {
     try {
       let res = await axios.get(this[i]);
-      if (res.status == 200) {
-        this[i] = res.data;
-      } else {
-        this[i] = "invalid url response";
-      }
+      this[i] = res.data;
     } catch (error) {
       this[i] = "invalid url";
     }

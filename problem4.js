@@ -22,7 +22,7 @@ async function normalFetch(url) {
   console.log("Fetching the url: " + url);
   try {
     const response = await axios.get(url);
-    return response.data.data;
+    return response.data;
   } catch (err) {
     console.log("Something wnt wrong: " + err);
     return err;
