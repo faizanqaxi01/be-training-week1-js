@@ -82,66 +82,48 @@ async function test() {
       "https://reqres.in/api/users/3",
     ];
 
-    // To calculate execution time
-    let startTime;
-    let endTime;
-    let totalTime;
+    console.log("Comparing time taken to execute: ");
 
     // TEST - Serial Callbacks
-    startTime = new Date().getTime();
+    console.time("Serial Callbacks");
     results = [];
     results = await populateCallbackSeq(urls, populateCallbackSeq);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
     // console.log("Updated results: ");
     // console.log(results);
-    console.log("\n Time taken to execute with Serial Callbacks: ");
-    console.log(totalTime + " ms");
+    console.timeEnd("Serial Callbacks");
 
     // TEST - Serial Promises
-    startTime = new Date().getTime();
+    console.time("Serial Promises");
     results = [];
     results = await populatePromiseSeq(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
     // console.log("Updated results: ");
     // console.log(results);
-    console.log("\n Time taken to execute with Serial Promises: ");
-    console.log(totalTime + " ms");
+    console.timeEnd("Serial Promises");
 
     // TEST - Parallel Promises
-    startTime = new Date().getTime();
+    console.time("Parallel Promises");
     results = [];
     results = await populatePromisePar(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
     // console.log("Updated results: ");
     // console.log(results);
-    console.log("\n Time taken to execute with Parallel Promises: ");
-    console.log(totalTime + " ms");
+    console.timeEnd("Parallel Promises");
 
     // TEST - Serial Async await
-    startTime = new Date().getTime();
+    console.time("Serial Async await");
     results = [];
     results = await populateAsyncSeq(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
     // console.log("Updated results: ");
     // console.log(results);
-    console.log("\n Time taken to execute with Serial Async await: ");
-    console.log(totalTime + " ms");
+    console.timeEnd("Serial Async await");
 
     // TEST - Parallel Async await
-    startTime = new Date().getTime();
+    console.time("Parallel Async await");
     results = [];
     results = await populateAsyncPar(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
-    // console.log("Updated results: ");
-    // results = results.map((res) => res.data);
-    // console.log(results);
-    console.log("\n Time taken to execute with Parallel  Async await: ");
-    console.log(totalTime + " ms");
+    console.timeEnd("Parallel Async await");
+    console.log("Updated results: ");
+    results = results.map((res) => res.data);
+    console.log(results);
   } catch (error) {
     console.log("Something went wrong");
   }
