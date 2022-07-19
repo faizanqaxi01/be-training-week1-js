@@ -2,22 +2,19 @@
 let sum = (num) => {
   let total = num;
 
-  let addNum = (val) => {
+  return (addNum = (val) => {
     if (val != undefined) {
       total += val;
       return addNum;
-    } else {
-      return total;
     }
-  };
-
-  return addNum;
+    return total;
+  });
 };
 
 // Testing
-console.dir(sum(1)());
-console.dir(sum(1)(2)());
-console.dir(sum(1)(2)(3)());
-console.dir(sum(1)(2)(3)(4)());
-console.dir(sum(1)(2)(3)(4)(5)());
-console.dir(sum(1)(2)(3)(4)(5)(6)());
+console.dir(sum(1)()); // 1
+console.dir(sum(1)(2)()); // 3
+console.dir(sum(1)(2)(3)()); // 6
+console.dir(sum(1)(2)(3)(4)()); // 10
+console.dir(sum(1)(2)(3)(4)(5)()); // 15
+console.dir(sum(1)(2)(3)(4)(5)(6)()); // 21

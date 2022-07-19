@@ -1,22 +1,18 @@
 const axios = require("axios");
 
 // Dummy array with urls
-let arr = [
-  "https://reqres.in/api/users/1",
-  "https://reqres.in/api/users/2",
-  "not a url",
-];
+let arr = ["https://reqres.in/api/users/1", "https://reqres.in/api/users/2"];
 
 // Making a populate method in Array to populate array elements having urls with responses
 Array.prototype.populate = async function () {
-  for (let i = 0; i < this.length; i++) {
-    try {
-      let res = await axios.get(this[i]);
-      this[i] = res.data;
-    } catch (error) {
-      this[i] = "invalid url";
-    }
+  try {
+    let responses = this.map(async (item) => axios.get(item));
+    responses = await Promise.all(responses);
+    this.forEach((url, index) => (this[index] = responses[index].data));
+  } catch (error) {
+    console.log("Something went wrong");
   }
+
   return this;
 };
 
@@ -27,5 +23,5 @@ arr
     console.log(arr);
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Some Error occurred!!");
   });
